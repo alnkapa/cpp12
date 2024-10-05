@@ -3,14 +3,24 @@ cmake_minimum_required(VERSION 3.25.1)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 set(CMAKE_BUILD_TYPE Debug)
 
-# set(CMAKE_MESSAGE_LOG_LEVEL VERBOSE)
-# set(CMAKE_CXX_STANDARD 20)  
-# set(CMAKE_CXX_STANDARD_REQUIRED ON)
-# set(CMAKE_CXX_EXTENSIONS OFF)  
-
 project(Bayan VERSION 0.0.1)
 
-add_executable(join_server main.cpp)
+set(RUNTIME_OUTPUT_DIRECTORY ${CMAKE_SOURCE_DIR}/bin)
+
+add_executable(mapper mapper.cpp)
+add_executable(reducer reducer.cpp)
+
+set_target_properties(mapper PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${RUNTIME_OUTPUT_DIRECTORY})
+set_target_properties(reducer PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${RUNTIME_OUTPUT_DIRECTORY})
+
+
+
+add_executable(mapper_variance mapper_variance.cpp)
+add_executable(reducer_variance reducer_variance.cpp)
+
+set_target_properties(mapper_variance PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${RUNTIME_OUTPUT_DIRECTORY})
+set_target_properties(reducer_variance PROPERTIES RUNTIME_OUTPUT_DIRECTORY ${RUNTIME_OUTPUT_DIRECTORY})
+
 
 #FIND_PACKAGE(Boost REQUIRED)
 
